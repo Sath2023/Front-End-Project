@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options</title>
+    <style>
+        body {
+            background-image: url("https://www.freepik.com/free-photos-vectors/payment-background"); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 50px;
+        }
+        h1 {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .payment-option {
+            display: inline-block;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .payment-option img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        .payment-option h3 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose your Payment Method</h1>
+    <a href="credit.html" class="payment-option">
+        <img src="card.webp" alt="Credit Card"> <h3>Credit/Debit Card</h3>
+    </a>
+    <a href="cash.html" class="payment-option">
+        <img src="COD.png" alt="Cash on Delivery"> <h3>Cash on Delivery</h3>
+    </a>
+    <a href="UPI.html" class="payment-option">
+        <img src="UPI.jpg" alt="UPI"> <h3>UPI</h3>
+    </a>
+</body>
+</html>

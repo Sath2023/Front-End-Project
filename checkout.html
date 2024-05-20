@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Checkout</h1>
+</header>
+
+<div class="checkout-container">
+    <h2>Select Payment Method</h2>
+    <form>
+        <div>
+            <button type="radio" id="creditCard" name="paymentMethod" value="Credit Card" required>
+                <a href="credit.html"> Credit Card </a> 
+            </button>
+        </div>
+        <br />
+        <div>
+            <button type="radio" id="UPI" name="paymentMethod" value="UPI" required>
+                <a href="UPI.html"> UPI</a> 
+            </button>
+        </div>
+        <br />
+        <div>
+            <button type="radio" id="creditCard" name="paymentMethod" value="Credit Card" required>
+                <a href="cash.html"> Cash On Delievery   </a> 
+            </button>
+        </div>
+        <br />
+    </form>
+</div>
+
+<script>
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("Payment confirmed! Your order is on the way.");
+    window.location.href = "index.html";
+});
+</script>
+</body>
+</html>

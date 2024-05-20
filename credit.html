@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Card Payment</title>
+</head>
+<body>
+  <h1>Credit Card Payment</h1>
+  <p>Please enter your credit card details to complete your order.</p>
+  <form id="creditCardForm">
+    <label for="cardNumber">Card Number:</label>
+    <input type="text" id="cardNumber" name="cardNumber" required maxlength="16" pattern="[0-9]{16}">
+    <br><br>
+    <label for="expiryDate">Expiry Date (MM/YY):</label>
+    <input type="text" id="expiryDate" name="expiryDate" required maxlength="5" pattern="[0-9]{2}/[0-9]{2}">
+    <br><br>
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" name="cvv" required maxlength="3" pattern="[0-9]{3}"> <br><br>
+    <span id="paymentError" style="color: red;"></span>
+    <button type="submit">Pay Now</button>
+  </form>
+
+  <script>
+    const creditCardForm = document.getElementById('creditCardForm');
+    const paymentError = document.getElementById('paymentError');
+
+    creditCardForm.addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      const cardNumber = document.getElementById('cardNumber').value;
+      const expiryDate = document.getElementById('expiryDate').value;
+      const cvv = document.getElementById('cvv').value;
+
+      // Simulated validation (replace with actual validation logic and security measures)
+      if (!/^[0-9]{16}$/.test(cardNumber)) {
+        paymentError.textContent = "Invalid card number format.";
+        return;
+      }
+      if (!/^[0-9]{2}\/[0-9]{2}$/.test(expiryDate)) {
+        paymentError.textContent = "Invalid expiry date format.";
+        return;
+      }
+      if (!/^[0-9]{3}$/.test(cvv)) {
+        paymentError.textContent = "Invalid CVV format.";
+        return;
+      }
+
+      // Simulated local storage (replace with actual secure payment processing)
+      localStorage.setItem('orderAmount', document.querySelector('p').textContent.split('$')[1]); // Store order amount
+      alert('Payment successful using credit card (for demo purposes, no actual payment processing is done).');
+      window.location.href = "paymentSuccess.html"; // Redirect to success page
+    });
+  </script>
+</body>
+</html>

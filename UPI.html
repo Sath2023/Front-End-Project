@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UPI Payment</title>
+  <link rel="stylesheet" href="UPI.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="payment-container">
+    <h1>Pay with UPI</h1>
+    <div class="qr-code">
+      <img src="qr.jpg" alt="QR Code">
+    </div>
+    <p class="upi-id">UPI ID: example@bank</p>
+    <p class="instructions">Scan the QR code or enter the UPI ID to pay.</p>
+    <div class="input-container">
+      <input type="text" placeholder="Enter UPI ID" class="upi-input">
+      <button class="pay-btn" id="pay">Pay Now</button>
+    </div>
+  </div>
+  <script>
+    document.querySelector("button").addEventListener("pay", function(event) {
+    event.preventDefault();
+    alert("Payment confirmed! Your order is on the way.");
+    window.location.href = "index.html";
+  });
+  </script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const totalAmount = urlParams.get("totalAmount");
+    if (totalAmount) 
+    {
+      document.getElementById("transactionAmount").textContent = totalAmount;
+    } 
+  </script>
+</body>
+</html>

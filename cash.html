@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cash on Delivery</title>
+</head>
+<body>
+  <h1>Cash on Delivery</h1>
+  <p>You have chosen Cash on Delivery for your order.</p>
+  <p>The order amount of $<span id="orderAmount"></span> will be collected upon delivery.</p>
+  <p><b>Please ensure you have the exact amount ready.</b></p>
+  <p>Thank you for your order!</p>
+
+  <script>
+    const orderAmount = document.getElementById('orderAmount');
+
+    // Retrieve stored order amount from local storage
+    const storedAmount = localStorage.getItem('orderAmount');
+    if (storedAmount) {
+      orderAmount.textContent = storedAmount;
+    } else {
+      alert("Order amount not found. Please try again.");
+      window.location.href = "index.html"; // Redirect to main page
+    }
+  </script>
+</body>
+</html>

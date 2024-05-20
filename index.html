@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Delivery System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Food Delivery System</h1>
+  </header>
+  <div class="categories">
+    <button onclick="showItems('northIndian')">North Indian</button>
+    <button onclick="showItems('southIndian')">South Indian</button>
+    <button onclick="showItems('chats')">Chats</button>
+    <button onclick="showItems('chinese')">Chinese</button>
+  </div>
+  <div id="foodItems" class="food-items"></div>
+  <div id="cart" class="cart">
+    <h2>Cart</h2>
+    <ul id="cartItems"></ul>
+    <p>Total Cost: <span id="totalCost">0</span></p>
+    <button onclick="checkout()">Checkout</button>
+  </div>
+  <script>
+
+    const foodMenu = {
+      northIndian: [
+        { name: "Chole Batura", price: 200, img: "images/chole batura.jpg" },
+        { name: "Butter Naan", price: 50, img: "images/naan.jpg" },
+        { name: "Dal Makhani", price: 180, img: "images/dal makhani.jpg" }
+      ],
+      southIndian: [
+        { name: "Dosa", price: 100, img: "images/dosa.jpg" },
+        { name: "Idli Vada", price: 60, img: "images/idli vada.webp" },
+        { name: "Pongal", price: 70, img: "images/pongal.jpg" }
+      ],
+      chats: [
+        { name: "Pani Puri", price: 30, img: "images/pani puri.webp" },
+        { name: "Bhel Puri", price: 40, img: "images/bhel puri.jpg" },
+        { name: "Raj Kachori", price: 50, img: "images/raj kachori.webp" }
+      ],
+      chinese: [
+        { name: "Fried Rice", price: 120, img: "images/fried rice.webp" },
+        { name: "Manchow Soup", price: 150, img: "images/manchow soup.jpg" },
+        { name: "Spring Rolls", price: 80, img: "images/sptring rolls.jpg" }
+      ]
+    };
+
+    function showItems(category) {
+      const foodItemsDiv = document.getElementById("foodItems");
+      const items = foodMenu[category];
+      foodItemsDiv.innerHTML = "";
+      items.forEach(item => {
+        const foodItem = document.createElement("div");
+        foodItem.className = "food-item";
+        foodItem.innerHTML = `<img src="${item.img}" alt="${item.name}">
+                               <p>${item.name}</p>
+                               <p>Price: $${item.price}</p>
+                               <button onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>`;
+        foodItemsDiv.appendChild(foodItem);
+      });
+    }
+
+    function addToCart(name, price) {
+      const cartItems = document.getElementById("cartItems");
+      const totalCostElement = document.getElementById("totalCost");
+      const item = document.createElement("li");
+      item.innerHTML = `${name} - $${price}`;
+      cartItems.appendChild(item);
+      const totalCost = parseFloat(totalCostElement.textContent) + price;
+      totalCostElement.textContent = totalCost.toFixed(2);
+    }
+    function proceedToCheckout(paymentMethod) {
+    const totalPrice = document.getElementById("totalPrice").textContent;
+    localStorage.setItem("cartTotal", totalPrice);
+    // Redirect to transaction page
+    window.location.href = "payment.html"; // Replace with your transaction page URL
+}
+
+    function checkout() {
+      window.location.href = "payment.html";
+    }
+  </script>
+</body>
+</html>
+
